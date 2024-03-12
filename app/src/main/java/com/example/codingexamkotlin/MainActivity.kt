@@ -1,6 +1,7 @@
 package com.example.codingexamkotlin
 
 import android.R
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
@@ -137,8 +138,17 @@ class MainActivity : AppCompatActivity() {
                         return@launch
                     }
                     Log.i(TAG," success ${response.body()}")
-                    Toast.makeText(baseContext,response.message().toString(),Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(baseContext,response.message().toString(),Toast.LENGTH_SHORT).show()
+
+                    val builder: AlertDialog.Builder = AlertDialog.Builder(binding.root.context)
+                    builder
+                        .setMessage("Api response: ${response.message()}")
+
+
+                    val dialog: AlertDialog = builder.create()
+                    dialog.show()
                 }
+
             }
 
 
